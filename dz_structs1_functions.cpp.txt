@@ -1,0 +1,117 @@
+#include <iostream>
+#include "Structs.h"
+
+// функции для задания 1 // 
+
+Car* input_list(Car* p) {                  // ф-ия, ввод характеристик машины пользователем
+    Car* ret = new Car;                    // выделение в памяти места, возврат указателя
+
+    std::cout << "Input length: ";  
+    std::cin >> ret->length;               // обращение к полю структуры и ввод значения пользователем
+    std::cout << "Input clearance: ";
+    std::cin >> ret->clearance;            // обращение к полю структуры и ввод значения пользователем
+    std::cout << "Input engine_volume: ";
+    std::cin >> ret->engine_volume;        // обращение к полю структуры и ввод значения пользователем
+    std::cout << "Input engine_power: ";
+    std::cin >> ret->engine_power;         // обращение к полю структуры и ввод значения пользователем
+    std::cout << "Input wheel_diameter: ";
+    std::cin >> ret->wheel_diameter;       // обращение к полю структуры и ввод значения пользователем
+    std::cout << "Input color: ";
+    std::cin >> ret->color;                // обращение к полю структуры и ввод значения пользователем
+    std::cout << "Input box type: ";
+    std::cin >> ret->box_type;             // обращение к полю структуры и ввод значения пользователем
+
+    return ret;
+}
+
+void print_list(Car* p) {                  // ф-ия, вывод характеристик на экран
+    std::cout << "\nLength: \t" << p->length << std::endl;
+    std::cout << "Clearance: \t" << p->clearance << std::endl;
+    std::cout << "Engine volume: \t" << p->engine_volume << std::endl;
+    std::cout << "Engine power: \t" << p->engine_power << std::endl;
+    std::cout << "Wheel diameter: " << p->wheel_diameter << std::endl;
+    std::cout << "Color: \t\t" << p->color << std::endl;
+    std::cout << "Box type: \t" << p->box_type << std::endl;
+}
+
+// функции для задания 2 // 
+
+complex add_numbers                         // ф-ия, сложение чисел
+(double x1, double x2,                      // число 1 явная часть, число 1 мнимая часть
+   double y1, double y2) {                  // число 2 явная часть, число 2 мнимая часть
+    complex x;                              // переменная для результата
+    x.real = x1 + x2;                       // результат, явная часть
+    x.imagine = y1 + y2;                    // результат, мнимая часть
+
+    return x;
+}
+
+complex sub_numbers                         // ф-ия, вычитание чисел
+(double x1, double x2,                      // число 1 явная часть, число 1 мнимая часть
+   double y1, double y2) {                  // число 2 явная часть, число 2 мнимая часть
+    complex x;                              // переменная для результата
+    x.real = x1 - x2;                       // результат, явная часть
+    x.imagine = y1 - y2;                    // результат, мнимая часть
+
+    return x;
+}
+
+complex mult_numbers                        // ф-ия, умножение чисел
+(double x1, double x2,                      // число 1 явная часть, число 1 мнимая часть
+   double y1, double y2) {                  // число 2 явная часть, число 2 мнимая часть
+    complex x;                              // переменная для результата
+    x.real = (x1 * x2) - (y1 * y2);         // результат, явная часть
+    x.imagine = (x1 * y2) + (y1 * x2);      // результат, мнимая часть
+
+    return x;
+}
+
+complex div_numbers                         // ф-ия, деление чисел
+(double x1, double x2,                      // число 1 явная часть, число 1 мнимая часть
+    double y1, double y2) {                 // число 2 явная часть, число 2 мнимая часть
+    complex x;                              // переменная для результата
+    x.real = ((x1 * x2) + (y1 * y2)) 
+        / ((x2 * x2) + (y2 * y2));          // результат, явная часть
+    x.imagine = ((x2 * y1) - (x1 * y2))     
+        / ((x2 * x2) + (y2 * y2));          // результат, мнимая часть
+
+    return x;
+}
+
+void print_complex(complex x, complex y) {  // ф-ия, вывод на экран
+    std::cout <<
+        " = " << x.real << " + " << x.imagine << "i" << std::endl;
+}
+
+void calculate_numbers                      // ф-ия, результат операций
+(double x1, double x2, 
+    double y1, double y2, char c) {
+    complex part1, part2;                   // переменная для явной и мнимой части
+
+    switch (c) {                            // выбор действий
+    case '+':                               // сложение 
+        part1 = add_numbers(x1, x2, y1, y2);
+        part2 = add_numbers(x1, x2, y1, y2);
+        print_complex(part1, part2);
+        break;
+
+    case '-':                               // вычитание
+        part1 = sub_numbers(x1, x2, y1, y2);
+        part2 = sub_numbers(x1, x2, y1, y2);
+        print_complex(part1, part2);
+        break;
+
+    case '*':                               // умножение
+        part1 = mult_numbers(x1, x2, y1, y2);
+        part2 = mult_numbers(x1, x2, y1, y2);
+        print_complex(part1, part2);
+        break;
+
+    case '/':                               // деление 
+        part1 = div_numbers(x1, x2, y1, y2);
+        part2 = div_numbers(x1, x2, y1, y2);
+        print_complex(part1, part2);
+        break;
+
+    }
+}

@@ -1,0 +1,46 @@
+// dz_structs1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include <iostream>
+#include "Structs.h"
+
+/*
+    Завдання 1. Реалізувати структуру «Автомобіль» 
+    (довжина, кліренс (висота посадки), об’єм двигуна, 
+    потужність двигуна, діаметр коліс, колір, тип коробки передач). 
+    Створіть функції для задання значень, відображення значень, 
+    пошуку значень
+*/
+int main1() {
+    struct Car v;
+    Car* p = input_list(&v);
+    print_list(p);
+
+    return 0;
+}
+
+/*
+    Завдання 2. Створіть структуру, що описує комплексне число. 
+    Реалізуйте арифметичні операції з комплексними числами: 
+    суму, різницю, множення, ділення.
+*/
+int main() {
+    double x1, y1;  
+    double x2, y2;  
+
+    char c;
+
+    std::cout << "Enter real and imaginary part, 1st number:\n";
+    std::cin >> x1 >> y1;
+    std::cout << "Enter real and imaginary part, 2nd number:\n";
+    std::cin >> x2 >> y2;
+    std::cout << "Enter action ('+' or '-' or '*' or '/'):\n";
+    std::cin >> c;
+
+    std::cout << "(" << x1 << " + " << x2 << "i) + ("
+        << y1 << " + " << y2 << "i)";
+
+    calculate_numbers(x1, x2, y1, y2, c);
+
+    return 0;
+}

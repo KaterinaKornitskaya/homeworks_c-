@@ -1,0 +1,5 @@
+Characters = 28
+Strings = 2
+Vowels = 8
+Consonants = 13
+Digits = 1

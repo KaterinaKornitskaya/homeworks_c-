@@ -1,0 +1,3 @@
+Hello, world
+Hello, people
+I have 2 apples.
